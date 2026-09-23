@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <meta name="theme-color" content="#17110d" />
+  <meta name="description" content="Churrasômetro: calcule carnes, carvão e ingredientes e monte o churrasco perfeito." />
+  <title>Churrasômetro — seu churrasco sem perrengue</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-noise"></div>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Churrasômetro">
+      <span class="brand-fire">🔥</span>
+      <span>Churrasômetro</span>
+    </a>
+    <nav class="top-actions">
+      <button class="new-bbq-btn" id="newBbqBtn" title="Começar novo churrasco">＋ Novo churrasco</button>
+      <button class="icon-button" id="historyBtn" title="Churrascos anteriores" aria-label="Churrascos anteriores">🕘</button>
+      <button class="icon-button" id="recipesBtn" title="Receitas" aria-label="Receitas">🍹</button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero section-wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">CHURRASCO SEM PERRENGUE</span>
+        <h1>Você cuida da brasa.<br /><span>Eu cuido do resto.</span></h1>
+        <p>Descubra quanto comprar, monte seu cardápio e compartilhe a lista de compras em poucos minutos.</p>
+        <div class="hero-badges">
+          <span>⚡ cálculo rápido</span>
+          <span>🛒 lista automática</span>
+          <span>💾 salva seus churrascos</span>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="smoke s1"></div><div class="smoke s2"></div><div class="smoke s3"></div>
+        <div class="grill">
+          <div class="grill-grid"></div>
+          <div class="skewer skewer-1">🥩</div>
+          <div class="skewer skewer-2">🍗</div>
+          <div class="skewer skewer-3">🌭</div>
+        </div>
+        <div class="flame f1">🔥</div>
+        <div class="flame f2">🔥</div>
+      </div>
+    </section>
+
+    <section class="section-wrap workspace">
+      <div class="stepper" id="stepper">
+        <div class="step active" data-step-label="1"><span>1</span><strong>Pessoas</strong></div>
+        <div class="step-line"></div>
+        <div class="step" data-step-label="2"><span>2</span><strong>Preferências</strong></div>
+        <div class="step-line"></div>
+        <div class="step" data-step-label="3"><span>3</span><strong>Cardápio</strong></div>
+        <div class="step-line"></div>
+        <div class="step" data-step-label="4"><span>4</span><strong>Resultado</strong></div>
+      </div>
+
+      <div id="appView">
+        <section class="panel step-panel active" data-panel="1">
+          <div class="panel-head">
+            <div>
+              <span class="kicker">ETAPA 01</span>
+              <h2>Quem vai atacar a churrasqueira?</h2>
+              <p>Uma estimativa inteligente começa pelas pessoas. As quantidades são ajustadas por idade e perfil de consumo.</p>
+            </div>
+            <div class="date-pill"><span>📅</span><input type="date" id="eventDate" /></div>
+          </div>
+
+          <div class="people-grid">
+            <div class="counter-card">
+              <div class="counter-icon">👨</div>
+              <div><span class="counter-label">Homens</span><small>porção maior</small></div>
+              <div class="counter"><button class="counter-btn" data-target="men" data-op="-">−</button><output id="menCount">4</output><button class="counter-btn" data-target="men" data-op="+">+</button></div>
+            </div>
+            <div class="counter-card">
+              <div class="counter-icon">👩</div>
+              <div><span class="counter-label">Mulheres</span><small>porção média</small></div>
+              <div class="counter"><button class="counter-btn" data-target="women" data-op="-">−</button><output id="womenCount">4</output><button class="counter-btn" data-target="women" data-op="+">+</button></div>
+            </div>
+            <div class="counter-card">
+              <div class="counter-icon">🧒</div>
+              <div><span class="counter-label">Crianças</span><small>até 12 anos</small></div>
+              <div class="counter"><button class="counter-btn" data-target="kids" data-op="-">−</button><output id="kidsCount">2</output><button class="counter-btn" data-target="kids" data-op="+">+</button></div>
+            </div>
+          </div>
+
+          <div class="ad-slot small-ad ad-unit" data-ad-slot="top-banner"><span>ESPAÇO PUBLICITÁRIO</span><strong>Banner 728 × 90 · Topo do fluxo</strong><small>Área pronta para AdSense, Ad Manager ou parceiro direto.</small></div>
+
+          <div class="panel-footer">
+            <div class="mini-summary"><span id="peopleTotal">10 pessoas</span><small>estimativa inicial</small></div>
+            <button class="primary-btn next-btn" data-next="2">Continuar <span>→</span></button>
+          </div>
+        </section>
+
+        <section class="panel step-panel" data-panel="2">
+          <div class="panel-head">
+            <div>
+              <span class="kicker">ETAPA 02</span>
+              <h2>Qual é a sua vibe de churras?</h2>
+              <p>Escolha os tipos de carne que você quer usar e diga o quanto pretende variar.</p>
+            </div>
+          </div>
+
+          <div class="option-block">
+            <h3>Tipos de carne</h3>
+            <div class="chip-grid" id="meatTypeChips">
+              <button class="choice-chip selected" data-meat-type="bovinos"><span>🥩</span> Bovinos</button>
+              <button class="choice-chip selected" data-meat-type="suinos"><span>🐷</span> Suínos</button>
+              <button class="choice-chip selected" data-meat-type="aves"><span>🍗</span> Aves</button>
+              <button class="choice-chip" data-meat-type="ovinos"><span>🐑</span> Ovinos</button>
+            </div>
+          </div>
+
+          <div class="option-block">
+            <h3>Nível do churrasco</h3>
+            <div class="vibe-grid" id="vibeOptions">
+              <button class="vibe-card selected" data-vibe="simples"><span class="vibe-emoji">🌭</span><strong>Raiz & simples</strong><small>Carne, pão e salada.</small></button>
+              <button class="vibe-card" data-vibe="amigos"><span class="vibe-emoji">🍖</span><strong>Entre amigos</strong><small>Mais variedade e acompanhamentos.</small></button>
+              <button class="vibe-card" data-vibe="completo"><span class="vibe-emoji">👨‍🍳</span><strong>Completo & elaborado</strong><small>Entradas, principais, drinks e sobremesa.</small></button>
+            </div>
+          </div>
+
+          <div class="option-block">
+            <h3>Extras que você quer considerar</h3>
+            <div class="toggle-list">
+              <label class="switch-row"><span><b>🥖 Pão de alho</b><small>Clássico que some primeiro.</small></span><input type="checkbox" id="extraGarlicBread" checked /><i></i></label>
+              <label class="switch-row"><span><b>🥗 Salada</b><small>Para equilibrar o estrago.</small></span><input type="checkbox" id="extraSalad" checked /><i></i></label>
+              <label class="switch-row"><span><b>🍚 Arroz e maionese</b><small>Favoritos da família.</small></span><input type="checkbox" id="extraRiceMayo" /><i></i></label>
+              <label class="switch-row"><span><b>🥖 Pão francês</b><small>Entra como opção de principal no churrasco raiz.</small></span><input type="checkbox" id="extraFrenchBread" /><i></i></label>
+            </div>
+          </div>
+
+          <div class="panel-footer">
+            <button class="secondary-btn prev-btn" data-prev="1">← Voltar</button>
+            <button class="primary-btn next-btn" data-next="3">Montar meu churrasco <span>🔥</span></button>
+          </div>
+        </section>
+
+        <section class="panel step-panel" data-panel="3">
+          <div class="panel-head">
+            <div>
+              <span class="kicker">ETAPA 03</span>
+              <h2>Escolha os protagonistas</h2>
+              <p>O Churrasômetro cria 3 combinações a partir das carnes que você liberou. Você pode favoritar os cortes.</p>
+            </div>
+          </div>
+
+          <div class="selection-grid" id="cutSelection"></div>
+
+          <div class="smart-callout"><span>💡</span><div><strong>Não precisa escolher tudo.</strong><p>Se deixar automático, o app distribui a quantidade entre os cortes mais populares da categoria.</p></div></div>
+
+          <div class="panel-footer">
+            <button class="secondary-btn prev-btn" data-prev="2">← Voltar</button>
+            <button class="primary-btn next-btn" data-next="4">Ver meus 3 cardápios <span>→</span></button>
+          </div>
+        </section>
+
+        <section class="panel step-panel" data-panel="4">
+          <div id="resultView"></div><div class="ad-slot result-ad ad-unit" data-ad-slot="result-banner"><span>ESPAÇO PUBLICITÁRIO</span><strong>Banner 320 × 100 / 728 × 90</strong><small>Excelente ponto para anúncio contextual após o cálculo.</small></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="section-wrap feature-strip home-only-card">
+      <article><span>🛒</span><div><strong>Lista de compras</strong><p>Pronta para copiar, compartilhar e marcar.</p></div></article>
+      <article><span>🧠</span><div><strong>Histórico inteligente</strong><p>Reaproveite churrascos anteriores em segundos.</p></div></article>
+      <article><span>📣</span><div><strong>Espaços para anunciantes</strong><p>Posicione banners sem atrapalhar a experiência.</p></div></article>
+    </section>
+
+    <section class="section-wrap content-section" id="recipesSection">
+      <div class="section-title-row"><div><span class="kicker">INSPIRAÇÃO</span><h2>Receitas para acompanhar a brasa</h2></div><button class="text-btn" id="seeAllRecipes">Ver todas →</button></div>
+      <div class="recipe-tabs"><button class="recipe-tab active" data-recipe-filter="all">Tudo</button><button class="recipe-tab" data-recipe-filter="drink">🍹 Drinks</button><button class="recipe-tab" data-recipe-filter="dessert">🍨 Sobremesas</button></div>
+      <div class="recipe-grid" id="recipeGrid"></div>
+    </section>
+
+    <section class="section-wrap ad-section"><div class="ad-slot ad-unit" data-ad-slot="content-banner"><span>ESPAÇO PUBLICITÁRIO</span><strong>Banner 320 × 250 / 970 × 250</strong><small>Posição de alto valor para supermercados, açougues, bebidas e marcas de churrasqueira.</small></div></section>
+
+    <section class="section-wrap history-section" id="historySection">
+      <div class="section-title-row"><div><span class="kicker">MEMÓRIA DE CHURRASQUEIRO</span><h2>Seus churrascos anteriores</h2></div><button class="text-btn" id="clearHistory">Limpar histórico</button></div>
+      <div id="historyList" class="history-list"></div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <dialog class="modal" id="shoppingModal">
+    <div class="modal-card"><button class="close-modal" data-close="shoppingModal">×</button><span class="kicker">LISTA DE COMPRAS</span><h2 id="shoppingTitle">Seu churrasco</h2><div id="shoppingList" class="shopping-list"></div><div class="modal-actions"><button class="primary-btn" id="copyShopping">📋 Copiar lista</button></div></div>
+  </dialog>
+
+
+  <dialog class="modal" id="customMenuModal">
+    <div class="modal-card custom-menu-modal"><button class="close-modal" data-close="customMenuModal">×</button><span class="kicker">CARDÁPIO PERSONALIZADO</span><h2>Monte do seu jeito 🔥</h2><p class="modal-intro">Escolha os itens que você mais gostou nos 3 cardápios. O app mantém as carnes já calculadas e monta uma combinação final para compartilhar.</p><div id="customMenuBuilder"></div><div class="modal-actions"><button class="secondary-btn" data-close="customMenuModal">Cancelar</button><button class="primary-btn" id="saveCustomMenu">Usar este cardápio</button></div></div>
+  </dialog>
+
+  <dialog class="modal" id="shareModal">
+    <div class="modal-card"><button class="close-modal" data-close="shareModal">×</button><span class="kicker">COMPARTILHAR</span><h2>Como você quer enviar?</h2><p class="modal-intro">Seu cardápio já foi escolhido. Agora é só escolher o canal.</p><div id="sharePreview" class="share-preview"></div><div class="modal-actions share-actions"><button class="secondary-btn" id="copyShare">📋 Copiar texto</button><button class="primary-btn" id="nativeShare">↗ Compartilhar</button><button class="whatsapp-btn" id="shareWhatsApp">🟢 WhatsApp</button></div></div>
+  </dialog>
+  <dialog class="modal" id="recipeModal">
+    <div class="modal-card"><button class="close-modal" data-close="recipeModal">×</button><div id="recipeModalContent"></div></div>
+  </dialog>
+
+  <script src="app.js"></script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));}</script>
+</body>
+</html>
