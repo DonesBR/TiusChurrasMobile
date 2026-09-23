@@ -1,13 +1,44 @@
 {
-  "name":"Churrasômetro — Churras",
-  "short_name":"Churrasômetro",
-  "start_url":"./",
-  "display":"standalone",
-  "background_color":"#17110d",
-  "theme_color":"#ffb02e",
-  "description":"Calcule carnes, carvão e ingredientes e monte seu churrasco.",
-  "icons":[
-    {"src":"icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
-    {"src":"icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  "id": "./",
+  "name": "Churrasômetro — Churras",
+  "short_name": "Churrasômetro",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#17110d",
+  "theme_color": "#ffb02e",
+  "description": "Calcule carnes, carvão e ingredientes e monte seu churrasco.",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/churrasometro-narrow.png",
+      "sizes": "540x960",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Tela inicial do Churrasômetro em celular"
+    },
+    {
+      "src": "screenshots/churrasometro-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Tela inicial do Churrasômetro em tela ampla"
+    }
   ]
 }
