@@ -40,5 +40,40 @@
       "form_factor": "wide",
       "label": "Tela inicial do Churrasômetro em tela ampla"
     }
+  ],
+  "display_override": [
+    "standalone"
+  ],
+  "categories": [
+    "food",
+    "lifestyle",
+    "utilities"
+  ],
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+      "platform": "play",
+      "id": "com.projetius.tiuschurrasometro"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Novo churrasco",
+      "short_name": "Novo churrasco",
+      "description": "Começar a organizar um novo churrasco",
+      "url": "./?shortcut=new"
+    },
+    {
+      "name": "Churrascos anteriores",
+      "short_name": "Histórico",
+      "description": "Abrir seus churrascos anteriores",
+      "url": "./?shortcut=history"
+    },
+    {
+      "name": "Receitas",
+      "short_name": "Receitas",
+      "description": "Ver receitas de drinks e sobremesas",
+      "url": "./?shortcut=recipes"
+    }
   ]
 }

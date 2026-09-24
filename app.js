@@ -396,3 +396,27 @@ function bind(){
 }
 
 updatePeopleUI();syncSelections();renderRecipes();renderHistory();updateHomeOnlySections(state.step);bind();
+
+// Atalhos do PWA: permitem iniciar um novo churrasco, abrir o histórico
+// ou ir direto para receitas quando o usuário acessa o app pelo launcher.
+function handlePwaShortcut(){
+  const shortcut = new URLSearchParams(window.location.search).get('shortcut');
+  if(!shortcut) return;
+  if(shortcut === 'new'){
+    startNewChurrasco();
+    return;
+  }
+  if(shortcut === 'history'){
+    goStep(1);
+    const history = $('#historySection');
+    if(history) setTimeout(()=>history.scrollIntoView({behavior:'smooth', block:'start'}), 60);
+    return;
+  }
+  if(shortcut === 'recipes'){
+    goStep(1);
+    const recipes = $('#recipesSection');
+    if(recipes) setTimeout(()=>recipes.scrollIntoView({behavior:'smooth', block:'start'}), 60);
+  }
+}
+
+handlePwaShortcut();
